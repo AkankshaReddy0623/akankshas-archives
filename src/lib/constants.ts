@@ -1,9 +1,13 @@
 export const COLORS = {
-  deepBlack: '#050505',
-  secondaryBlack: '#101010',
-  charcoal: '#191919',
-  offWhite: '#F2F2F2',
-  mutedGrey: '#999999',
+  deepBlack: '#020202',
+  secondaryBlack: '#040404',
+  elevatedBlack: '#080808',
+  cardBlack: '#0C0C0C',
+  hoverBlack: '#121212',
+  charcoal: '#161616',
+  offWhite: '#F0F0F0',
+  secondaryText: '#A0A0A0',
+  mutedGrey: '#707070',
   gold: '#E8B923',
 } as const;
 
