@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import AmbientScene3D from '@/components/ui/AmbientScene3D';
 import GrainOverlay from '@/components/ui/GrainOverlay';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import CustomCursor from '@/components/ui/CustomCursor';
@@ -35,13 +36,16 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#020202] text-[#F0F0F0] font-sans antialiased selection:bg-[#E8B923] selection:text-[#020202] min-h-screen flex flex-col">
+      <body className="bg-[#020202] text-[#F0F0F0] font-sans antialiased selection:bg-[#E8B923] selection:text-[#020202] min-h-screen flex flex-col relative overflow-x-hidden">
+        {/* Fixed Ambient 3D Scene (Gold & Ivory particles, atmospheric lights, spatial framing viewfinders) */}
+        <AmbientScene3D />
+        {/* Fixed Ambient 35mm Film Grain & Charcoal Canvas (Isolated at z-0, strictly behind main content) */}
+        <GrainOverlay />
         <ScrollProgress />
         <CustomCursor />
         <Header />
-        <main className="flex-1 flex flex-col">{children}</main>
+        <main className="relative z-10 flex-1 flex flex-col">{children}</main>
         <Footer />
-        <GrainOverlay />
       </body>
     </html>
   );

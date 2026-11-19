@@ -110,9 +110,9 @@ const contactCards: ContactCardItem[] = [
 
 export default function ContactCTA() {
   return (
-    <section className="relative w-full bg-[#020202] py-20 sm:py-24 md:py-28 border-t border-white/5 overflow-hidden">
-      {/* Background Ambient Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] bg-radial from-[#E8B923]/8 via-transparent to-transparent blur-3xl opacity-40" />
+    <section className="relative w-full bg-transparent py-20 sm:py-24 md:py-28 border-t border-white/5 overflow-hidden">
+      {/* Background Ambient Glow (Subtle & Restrained) */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] bg-radial from-[#E8B923]/3 via-transparent to-transparent blur-3xl opacity-25" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-12 text-center">
         {/* Section Header */}

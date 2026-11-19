@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, ArrowUpRight, X } from 'lucide-react';
+import GlowingShadow from '@/components/ui/glowing-shadow';
 import { navLinks } from '@/data/navigation';
 import { categories } from '@/data/categories';
 import { siteConfig } from '@/data/site';
@@ -264,13 +265,14 @@ export default function Header() {
 
           {/* Right: Primary CTA (Desktop & Tablet) */}
           <div className="hidden sm:flex items-center gap-2 shrink-0">
-            <Link
+            <GlowingShadow
               href="/contact"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E8B923] text-[#020202] text-[11px] uppercase tracking-[0.16em] font-semibold hover:bg-white transition-colors duration-200 shadow-md shadow-[#E8B923]/15 shrink-0"
+              variant="gold"
+              size="sm"
+              icon={<ArrowUpRight className="h-3.5 w-3.5" />}
             >
-              <span>Get in Touch</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+              Get in Touch
+            </GlowingShadow>
 
             {/* Mobile menu button on tablet */}
             <button
@@ -428,15 +430,17 @@ export default function Header() {
               </Link>
 
               {/* Mobile CTA */}
-              <div className="pt-4">
-                <Link
+              <div className="pt-4 flex justify-center">
+                <GlowingShadow
                   href="/contact"
+                  variant="gold"
+                  size="md"
+                  className="w-full"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-[#E8B923] text-[#020202] text-xs uppercase tracking-[0.16em] font-semibold shadow-lg shadow-[#E8B923]/20 hover:bg-white transition-colors duration-200"
+                  icon={<ArrowUpRight className="h-4 w-4" />}
                 >
-                  <span>Get in Touch</span>
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
+                  Get in Touch
+                </GlowingShadow>
               </div>
 
               {/* Mobile Footer Info */}

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import GlowingShadow from '@/components/ui/glowing-shadow';
 import { siteConfig } from '@/data/site';
 
 // Dynamically import Three.js 3D WebGL scene (client-only, lazy-loaded)
@@ -53,7 +54,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full bg-[#020202] pt-20 sm:pt-24 lg:pt-26 pb-6 sm:pb-8 flex flex-col justify-start">
+    <section className="relative w-full bg-transparent pt-20 sm:pt-24 lg:pt-26 pb-6 sm:pb-8 flex flex-col justify-start">
       {/* Three.js Interactive 3D WebGL Canvas Layer (z-0) */}
       <HeroScene3D />
 
@@ -163,18 +164,18 @@ export default function Hero() {
               {/* Subtle Ambient Backlight Glow directly behind subject silhouette */}
               <div
                 aria-hidden="true"
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[220px] w-[220px] xs:h-[250px] xs:w-[250px] sm:h-[300px] sm:w-[300px] md:h-[350px] md:w-[350px] rounded-full bg-radial from-[#E8B923]/12 via-transparent to-transparent blur-3xl opacity-60 pointer-events-none -z-10"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[240px] w-[240px] xs:h-[270px] xs:w-[270px] sm:h-[320px] sm:w-[320px] md:h-[380px] md:w-[380px] rounded-full bg-radial from-[#E8B923]/18 via-[#E8B923]/5 to-transparent blur-3xl opacity-80 pointer-events-none -z-10"
               />
 
               {/* Truly Isolated Cut-Out Portrait with Silhouette Drop-Shadow & Bottom Dissolve Mask */}
-              <div className="relative w-[145px] xs:w-[165px] sm:w-[195px] md:w-[225px] lg:w-[250px] xl:w-[270px] aspect-[1177/2015] [mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)]">
+              <div className="relative w-[145px] xs:w-[165px] sm:w-[195px] md:w-[225px] lg:w-[250px] xl:w-[270px] aspect-[1177/2015] [mask-image:linear-gradient(to_bottom,black_86%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_86%,transparent_100%)]">
                 <Image
                   src="/images/hero/portrait.webp"
                   alt="Akanksha Reddy — Portrait"
                   fill
                   priority
                   sizes="(max-width: 640px) 165px, (max-width: 768px) 195px, (max-width: 1024px) 225px, 270px"
-                  className="object-contain object-bottom filter contrast-[1.04] drop-shadow-[0_16px_28px_rgba(0,0,0,0.92)]"
+                  className="object-contain object-bottom filter contrast-[1.06] brightness-[1.02] drop-shadow-[0_16px_32px_rgba(0,0,0,0.92)]"
                 />
               </div>
             </div>
@@ -226,14 +227,15 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.65 }}
             className="flex items-center gap-2.5 sm:gap-3 shrink-0 pt-1 md:pt-0"
           >
-            {/* Primary CTA: Yellow/Gold Default, Smoothly Turns White on Hover */}
-            <Link
+            {/* Primary CTA: Glowing Champagne Gold Shadow */}
+            <GlowingShadow
               href="#portfolio"
-              className="group inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#E8B923] text-[#020202] text-[11px] sm:text-xs uppercase tracking-[0.16em] font-semibold hover:bg-[#F0F0F0] transition-colors duration-200 shadow-xl shadow-[#E8B923]/20 hover:shadow-white/20"
+              variant="gold"
+              size="md"
+              icon={<ArrowDown className="h-3.5 w-3.5" />}
             >
-              <span>Explore my portfolio</span>
-              <ArrowDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
-            </Link>
+              Explore my portfolio
+            </GlowingShadow>
 
             {/* Secondary CTA: Refined Glass Border */}
             <Link

@@ -50,20 +50,20 @@ export default function HeroScene3D() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.25 : 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 0.98;
     container.appendChild(renderer.domElement);
 
-    // ─── Cinematic Darkroom Lighting ───
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    // ─── Restrained Cinematic Darkroom Lighting ───
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.22);
     scene.add(ambientLight);
 
     // Warm Golden Key Light linked to visual identity (#E8B923)
-    const goldKeyLight = new THREE.PointLight(0xe8b923, isMobile ? 25 : 38, 45);
+    const goldKeyLight = new THREE.PointLight(0xe8b923, isMobile ? 7 : 11, 35);
     goldKeyLight.position.set(7, 5, 9);
     scene.add(goldKeyLight);
 
-    // Cool Atmospheric Rim Light
-    const rimLight = new THREE.PointLight(0xffffff, 14, 40);
+    // Subtle Cool Atmospheric Rim Light
+    const rimLight = new THREE.PointLight(0xffffff, 3.5, 28);
     rimLight.position.set(-9, -4, 6);
     scene.add(rimLight);
 
@@ -71,10 +71,10 @@ export default function HeroScene3D() {
     const glassMaterial = new THREE.MeshPhysicalMaterial({
       color: 0x0a0a0a,
       transparent: true,
-      opacity: 0.35,
-      roughness: 0.2,
+      opacity: 0.16,
+      roughness: 0.25,
       metalness: 0.1,
-      transmission: 0.35,
+      transmission: 0.25,
       ior: 1.4,
       side: THREE.DoubleSide,
     });
@@ -83,21 +83,21 @@ export default function HeroScene3D() {
     const goldBorderMaterial = new THREE.LineBasicMaterial({
       color: 0xe8b923,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.24,
     });
     materialsToDispose.push(goldBorderMaterial);
 
     const gridLineMaterial = new THREE.LineBasicMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.09,
+      opacity: 0.04,
     });
     materialsToDispose.push(gridLineMaterial);
 
     const cornerMaterial = new THREE.LineBasicMaterial({
       color: 0xe8b923,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.38,
     });
     materialsToDispose.push(cornerMaterial);
 
@@ -235,7 +235,7 @@ export default function HeroScene3D() {
     opticsGroup.add(rGroup);
 
     // ─── Layer 3: Ambient Golden Dust Particles ───
-    const particleCount = isMobile ? 50 : 130;
+    const particleCount = isMobile ? 24 : 55;
     const particleGeo = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
 
@@ -250,9 +250,9 @@ export default function HeroScene3D() {
 
     const particleMat = new THREE.PointsMaterial({
       color: 0xe8b923,
-      size: isMobile ? 0.12 : 0.14,
+      size: isMobile ? 0.08 : 0.10,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.22,
       blending: THREE.AdditiveBlending,
     });
     materialsToDispose.push(particleMat);
@@ -376,9 +376,8 @@ export default function HeroScene3D() {
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
     >
-      {/* Ambient Radial Vignette Backdrops */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-radial from-[#E8B923]/10 via-transparent to-transparent blur-3xl opacity-50 pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 translate-x-1/3 h-[500px] w-[500px] rounded-full bg-radial from-[#121212]/40 via-transparent to-transparent blur-3xl opacity-60 pointer-events-none" />
+      {/* Subtle Warm Ambient Accent */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-radial from-[#E8B923]/3 via-transparent to-transparent blur-3xl opacity-30 pointer-events-none" />
     </div>
   );
 }
